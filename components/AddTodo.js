@@ -15,11 +15,17 @@ const Button = () => (
     <Image source={require('../assets/icons/add_white/add_white.png')} />
   </View>
 );
-export default function AddTodo() {
+
+export default function AddTodo({onInsert}) {
   const [text, setText] = useState();
 
-  const onSubmit = () => {};
+  const onSubmit = () => {
+    onInsert(text);
+    setText('');
+  };
+
   const onPress = () => {
+    onInsert(text);
     setText('');
     Keyboard.dismiss();
   };
